@@ -178,20 +178,18 @@ namespace CapaDatos
         // GET SEARCH
         public DataTable GetSearch(DB_users UserSearch) {
             string respuesta = "";
-            DataTable AllUsers = new DataTable("users");
+            DataTable AllUsers = new DataTable("usuarios");
             SqlConnection SQL = new SqlConnection();
-            try
-            {
-
+            try {
                 SQL.ConnectionString = ConexionDB.StringConection;
                 SqlCommand SQL_comando = new SqlCommand();
                 SQL_comando.Connection = SQL;
 
-                SQL_comando.CommandText = "DB_USERS_FIND_NAME";
+                SQL_comando.CommandText = "GET_SEARCH_usuarios";
                 SQL_comando.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter Search = new SqlParameter();
-                Search.ParameterName = "@varName";
+                Search.ParameterName = "@search";
                 Search.SqlDbType = SqlDbType.VarChar;
                 Search.Size = 256;
                 Search.Value = UserSearch.Search_value;
@@ -200,15 +198,11 @@ namespace CapaDatos
                 SqlDataAdapter RespuestaSQL = new SqlDataAdapter(SQL_comando);
                 RespuestaSQL.Fill(AllUsers);
 
-            }
-            catch (Exception error)
-            {
+            } catch (Exception error) {
                 respuesta = error.Message;
                 AllUsers = null;
                 throw;
-            }
-            finally
-            {
+            } finally {
                 if (SQL.State == ConnectionState.Open) SQL.Close();
             }
             return AllUsers;
