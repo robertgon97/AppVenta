@@ -13,10 +13,19 @@ namespace CapaDatos
     // Esta clase es para manejar los datos de una tabla en especifico
     class DB_users
     {
-        private int _user_id;
-        private string _user_username;
-        private string _user_name;
-        private string _user_password;
+        private int _usuario_id;
+        private int _usuario_tipo_id;
+        private int _tipo_documento_id;
+        private string _usuario_username;
+        private string _usuario_password;
+        private string _usuario_nombres;
+        private string _usuario_apellidos;
+        private string _usuario_sexo;
+        private string _usuario_fecha_nacimiento;
+        private int _usuario_dni;
+        private string _usuario_direccion;
+        private string _usuario_email;
+        private string _usuario_telefono;
         private string _search_value;
 
         private string Encriptar(string valor) {
@@ -30,27 +39,81 @@ namespace CapaDatos
         }
 
         public int User_id
-        { // Encapsulamiento de _user_id
-            get { return _user_id; }
-            set { _user_id = value; }
+        { // Encapsulamiento de _usuario_id
+            get { return _usuario_id; }
+            set { _usuario_id = value; }
         }
 
-        public string User_username
-        { // Encapsulamiento de _user_username
-            get { return _user_username; }
-            set { _user_username = value; }
+        public int Usuario_tipo_id
+        { // Encapsulamiento de _usuario_tipo_id
+            get { return _usuario_tipo_id; }
+            set { _usuario_tipo_id = value; }
         }
 
-        public string User_name
-        { // Encapsulamiento de _user_name
-            get { return _user_name; }
-            set { _user_name = value; }
+        public int Tipo_documento_id
+        { // Encapsulamiento de _tipo_documento_id
+            get { return _tipo_documento_id; }
+            set { _tipo_documento_id = value; }
+        }
+
+        public string Usuario_username
+        { // Encapsulamiento de _usuario_username
+            get { return _usuario_username; }
+            set { _usuario_username = value; }
         }
 
         public string User_password
-        { // Encapsulamiento de _user_password
-            get { return _user_password; }
-            set { _user_password = Encriptar(_user_password); }
+        { // Encapsulamiento de _usuario_password
+            get { return Descriptar(_usuario_password); }
+            set { _usuario_password = Encriptar(_usuario_password); }
+        }
+
+        public string Usuario_nombres
+        { // Encapsulamiento de _usuario_nombres
+            get { return _usuario_nombres; }
+            set { _usuario_nombres = value; }
+        }
+
+        public string Usuario_apellidos
+        { // Encapsulamiento de _usuario_apellidos
+            get { return _usuario_apellidos; }
+            set { _usuario_apellidos = value; }
+        }
+
+        public string Usuario_sexo
+        { // Encapsulamiento de _usuario_apellidos
+            get { return _usuario_sexo; }
+            set { _usuario_sexo = value; }
+        }
+
+        public string Usuario_fecha_nacimiento
+        { // Encapsulamiento de _usuario_fecha_nacimiento
+            get { return _usuario_fecha_nacimiento; }
+            set { _usuario_fecha_nacimiento = value; }
+        }
+
+        public int Usuario_dni
+        { // Encapsulamiento de _usuario_dni
+            get { return _usuario_dni; }
+            set { _usuario_dni = value; }
+        }
+
+        public string Usuario_direccion
+        { // Encapsulamiento de _usuario_direccion
+            get { return _usuario_direccion; }
+            set { _usuario_direccion = value; }
+        }
+
+        public string Usuario_email
+        { // Encapsulamiento de _usuario_direccion
+            get { return _usuario_email; }
+            set { _usuario_email = value; }
+        }
+
+        public string Usuario_telefono
+        { // Encapsulamiento de _usuario_telefono
+            get { return _usuario_telefono; }
+            set { _usuario_telefono = value; }
         }
 
         public string Search_value
