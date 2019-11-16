@@ -253,36 +253,98 @@ namespace CapaDatos
                 // Establecer Procedimiento
                 SqlCommand SQL_comando = new SqlCommand();
                 SQL_comando.Connection = SQL; // Heredar conexion
-                SQL_comando.CommandText = "DB_USERS_REGISTER"; // comando de procedimiento almacenado
+                SQL_comando.CommandText = "POSTusuarios"; // comando de procedimiento almacenado
                 SQL_comando.CommandType = CommandType.StoredProcedure; // Indicamos que es un procedimiento almacenado
 
                 // Creamos parametros de ejecucion SQL
                 SqlParameter IDUSER = new SqlParameter(); // instanciamos
-                IDUSER.ParameterName = "@varID"; // nombre de variable
+                IDUSER.ParameterName = "@idusuario"; // nombre de variable
                 IDUSER.SqlDbType = SqlDbType.Int; // tipo de variable
                 IDUSER.Direction = ParameterDirection.Output; // formato de entrada / salida
                 SQL_comando.Parameters.Add(IDUSER); // Añadimos al comando
+                
+                SqlParameter TIPOUSER = new SqlParameter(); // instanciamos
+                TIPOUSER.ParameterName = "@usuario_tipo_id"; // nombre de variable
+                TIPOUSER.SqlDbType = SqlDbType.Int; // tipo de variable
+                TIPOUSER.Size = 256;
+                TIPOUSER.Value = UserNew.Usuario_tipo_id;
+                SQL_comando.Parameters.Add(TIPOUSER); // Añadimos al comando
+
+                SqlParameter TIPODOCUMENTO = new SqlParameter(); // instanciamos
+                TIPODOCUMENTO.ParameterName = "@tipo_documento_id"; // nombre de variable
+                TIPODOCUMENTO.SqlDbType = SqlDbType.Int; // tipo de variable
+                TIPODOCUMENTO.Size = 256;
+                TIPODOCUMENTO.Value = UserNew.Tipo_documento_id;
+                SQL_comando.Parameters.Add(TIPODOCUMENTO); // Añadimos al comando
 
                 SqlParameter USERNAME = new SqlParameter(); // instanciamos
-                USERNAME.ParameterName = "@varUser"; // nombre de variable
+                USERNAME.ParameterName = "@usuario_username"; // nombre de variable
                 USERNAME.SqlDbType = SqlDbType.VarChar; // tipo de variable
-                USERNAME.Size = 50; // Tamaño de variable
-                USERNAME.Value = UserNew.User_username; // Valor de la variable
+                USERNAME.Size = 150; // Tamaño de variable
+                USERNAME.Value = UserNew.Usuario_username; // Valor de la variable
                 SQL_comando.Parameters.Add(USERNAME); // Añadimos al comando
 
-                SqlParameter NAME = new SqlParameter(); // instanciamos
-                NAME.ParameterName = "@varName"; // nombre de variable
-                NAME.SqlDbType = SqlDbType.VarChar; // tipo de variable
-                NAME.Size = 50; // Tamaño de variable
-                NAME.Value = UserNew.User_name; // valor de la variable
-                SQL_comando.Parameters.Add(NAME); // Añadimos al comando
-
                 SqlParameter PASSWORD = new SqlParameter(); // instanciamos
-                PASSWORD.ParameterName = "@varPassword"; // nombre de variable
+                PASSWORD.ParameterName = "@usuario_password"; // nombre de variable
                 PASSWORD.SqlDbType = SqlDbType.VarChar; // tipo de variable
-                PASSWORD.Size = 256; // Tamaño de variable
+                PASSWORD.Size = 500; // Tamaño de variable
                 PASSWORD.Value = UserNew.User_password; // valor de la variable
                 SQL_comando.Parameters.Add(PASSWORD); // Añadimos al comando
+
+                SqlParameter NAME = new SqlParameter(); // instanciamos
+                NAME.ParameterName = "@usuario_nombres"; // nombre de variable
+                NAME.SqlDbType = SqlDbType.VarChar; // tipo de variable
+                NAME.Size = 50; // Tamaño de variable
+                NAME.Value = UserNew.Usuario_nombres; // valor de la variable
+                SQL_comando.Parameters.Add(NAME); // Añadimos al comando
+
+                SqlParameter APELLIDOS = new SqlParameter(); // instanciamos
+                APELLIDOS.ParameterName = "@usuario_apellidos"; // nombre de variable
+                APELLIDOS.SqlDbType = SqlDbType.VarChar; // tipo de variable
+                APELLIDOS.Size = 50; // Tamaño de variable
+                APELLIDOS.Value = UserNew.Usuario_apellidos; // valor de la variable
+                SQL_comando.Parameters.Add(APELLIDOS); // Añadimos al comando
+
+                SqlParameter SEXO = new SqlParameter(); // instanciamos
+                SEXO.ParameterName = "@usuario_sexo"; // nombre de variable
+                SEXO.SqlDbType = SqlDbType.VarChar; // tipo de variable
+                SEXO.Size = 50; // Tamaño de variable
+                SEXO.Value = UserNew.Usuario_sexo; // valor de la variable
+                SQL_comando.Parameters.Add(SEXO); // Añadimos al comando
+
+                SqlParameter NACIMIENTO = new SqlParameter(); // instanciamos
+                NACIMIENTO.ParameterName = "@usuario_fecha_nacimiento"; // nombre de variable
+                NACIMIENTO.SqlDbType = SqlDbType.Date; // tipo de variable
+                NACIMIENTO.Value = UserNew.Usuario_fecha_nacimiento; // valor de la variable
+                SQL_comando.Parameters.Add(NACIMIENTO); // Añadimos al comando
+
+                SqlParameter Cedula = new SqlParameter(); // instanciamos
+                Cedula.ParameterName = "@usuario_dni"; // nombre de variable
+                Cedula.SqlDbType = SqlDbType.Int; // tipo de variable
+                Cedula.Size = 15;
+                Cedula.Value = UserNew.Usuario_dni;
+                SQL_comando.Parameters.Add(Cedula); // Añadimos al comando
+
+                SqlParameter DIRECCION = new SqlParameter(); // instanciamos
+                DIRECCION.ParameterName = "@usuario_direccion"; // nombre de variable
+                DIRECCION.SqlDbType = SqlDbType.Text; // tipo de variable
+                DIRECCION.Size = 300; // Tamaño de variable
+                DIRECCION.Value = UserNew.Usuario_direccion; // valor de la variable
+                SQL_comando.Parameters.Add(DIRECCION); // Añadimos al comando
+
+                SqlParameter CORREO = new SqlParameter(); // instanciamos
+                CORREO.ParameterName = "@usuario_email"; // nombre de variable
+                CORREO.SqlDbType = SqlDbType.Text; // tipo de variable
+                CORREO.Size = 300; // Tamaño de variable
+                CORREO.Value = UserNew.Usuario_email; // valor de la variable
+                SQL_comando.Parameters.Add(CORREO); // Añadimos al comando
+
+                SqlParameter TELEFONO = new SqlParameter(); // instanciamos
+                TELEFONO.ParameterName = "@usuario_telefono"; // nombre de variable
+                TELEFONO.SqlDbType = SqlDbType.Int; // tipo de variable
+                TELEFONO.Size = 50;
+                TELEFONO.Value = UserNew.Usuario_telefono;
+                SQL_comando.Parameters.Add(TELEFONO); // Añadimos al comando
 
                 // Ejecutar consulta
                 respuesta = SQL_comando.ExecuteNonQuery() == 1 || true ? "Realizado Exitosamente" : "Error al guardar el usuario";
