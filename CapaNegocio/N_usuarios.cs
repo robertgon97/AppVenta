@@ -9,8 +9,12 @@ using System.Data;
 
 namespace CapaNegocio
 {
-    class N_usuarios
+    public class N_usuarios
     {
-
+        public static string agregarUsuario(string a)
+        {
+            DB_users nuevoUsuario = new DB_users();
+            return nuevoUsuario;
+        }
     }
 }
