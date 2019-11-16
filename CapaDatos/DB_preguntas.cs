@@ -207,5 +207,152 @@ namespace CapaDatos
             return ALLPREGUNTAS;
         }
 
+        // INSERT
+        public string Create(DB_preguntas PreguntNew)
+        {
+            string respuesta = "";
+            SqlConnection SQL = new SqlConnection();
+            try
+            {
+                // Conexion
+                SQL.ConnectionString = ConexionDB.StringConection;
+                SQL.Open();
+
+                // Establecer Procedimiento
+                SqlCommand SQL_comando = new SqlCommand();
+                SQL_comando.Connection = SQL; // Heredar conexion
+                SQL_comando.CommandText = "POSTusuarios_pregunta_seguridad"; // comando de procedimiento almacenado
+                SQL_comando.CommandType = CommandType.StoredProcedure; // Indicamos que es un procedimiento almacenado
+
+                // Creamos parametros de ejecucion SQL
+                SqlParameter IDPREGUNTA = new SqlParameter(); // instanciamos
+                IDPREGUNTA.ParameterName = "@idpregunta"; // nombre de variable
+                IDPREGUNTA.SqlDbType = SqlDbType.Int; // tipo de variable
+                IDPREGUNTA.Direction = ParameterDirection.Output; // formato de entrada / salida
+                SQL_comando.Parameters.Add(IDPREGUNTA); // Añadimos al comando
+
+                SqlParameter IDUSER = new SqlParameter(); // instanciamos
+                IDUSER.ParameterName = "@usuario"; // nombre de variable
+                IDUSER.SqlDbType = SqlDbType.Int; // tipo de variable
+                IDUSER.Size = 256;
+                IDUSER.Value = PreguntNew.Usuario_id;
+                SQL_comando.Parameters.Add(IDUSER); // Añadimos al comando
+                
+                SqlParameter PREGUNTA = new SqlParameter(); // instanciamos
+                PREGUNTA.ParameterName = "@pregunta"; // nombre de variable
+                PREGUNTA.SqlDbType = SqlDbType.VarChar; // tipo de variable
+                PREGUNTA.Size = 150; // Tamaño de variable
+                PREGUNTA.Value = PreguntNew.Usuarios_pregunta_seguridad_pregunta; // Valor de la variable
+                SQL_comando.Parameters.Add(PREGUNTA); // Añadimos al comando
+
+                SqlParameter RESPUESTA = new SqlParameter(); // instanciamos
+                RESPUESTA.ParameterName = "@respuesta"; // nombre de variable
+                RESPUESTA.SqlDbType = SqlDbType.VarChar; // tipo de variable
+                RESPUESTA.Size = 500; // Tamaño de variable
+                RESPUESTA.Value = PreguntNew.Usuarios_pregunta_seguridad_respuesta; // valor de la variable
+                SQL_comando.Parameters.Add(RESPUESTA); // Añadimos al comando
+                
+                // Ejecutar consulta
+                respuesta = SQL_comando.ExecuteNonQuery() == 1 || true ? "Realizado Exitosamente" : "Error al guardar la pregunta del usuario";
+            } catch (Exception error) {
+                respuesta = error.Message;
+                throw;
+            } finally {
+                // Cerramos la conexion
+                if (SQL.State == ConnectionState.Open) SQL.Close();
+            }
+            return respuesta;
+        }
+
+        // EDIT
+        public string Edit(DB_preguntas PreguntEdit)
+        {
+            string respuesta = "";
+            SqlConnection SQL = new SqlConnection();
+            try
+            {
+                SQL.ConnectionString = ConexionDB.StringConection;
+                SQL.Open();
+
+                SqlCommand SQL_comando = new SqlCommand();
+                SQL_comando.Connection = SQL;
+                SQL_comando.CommandText = "PUTusuarios_pregunta_seguridad";
+                SQL_comando.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter IDPREGUNTA = new SqlParameter();
+                IDPREGUNTA.ParameterName = "@idpregunta";
+                IDPREGUNTA.SqlDbType = SqlDbType.Int;
+                IDPREGUNTA.Size = 250;
+                IDPREGUNTA.Value = PreguntEdit.Usuarios_pregunta_seguridad_id;
+                SQL_comando.Parameters.Add(IDPREGUNTA);
+
+                SqlParameter IDUSER = new SqlParameter(); // instanciamos
+                IDUSER.ParameterName = "@usuario"; // nombre de variable
+                IDUSER.SqlDbType = SqlDbType.Int; // tipo de variable
+                IDUSER.Size = 256;
+                IDUSER.Value = PreguntEdit.Usuario_id;
+                SQL_comando.Parameters.Add(IDUSER); // Añadimos al comando
+
+                SqlParameter PREGUNTA = new SqlParameter(); // instanciamos
+                PREGUNTA.ParameterName = "@pregunta"; // nombre de variable
+                PREGUNTA.SqlDbType = SqlDbType.VarChar; // tipo de variable
+                PREGUNTA.Size = 150; // Tamaño de variable
+                PREGUNTA.Value = PreguntEdit.Usuarios_pregunta_seguridad_pregunta; // Valor de la variable
+                SQL_comando.Parameters.Add(PREGUNTA); // Añadimos al comando
+
+                SqlParameter RESPUESTA = new SqlParameter(); // instanciamos
+                RESPUESTA.ParameterName = "@respuesta"; // nombre de variable
+                RESPUESTA.SqlDbType = SqlDbType.VarChar; // tipo de variable
+                RESPUESTA.Size = 500; // Tamaño de variable
+                RESPUESTA.Value = PreguntEdit.Usuarios_pregunta_seguridad_respuesta; // valor de la variable
+                SQL_comando.Parameters.Add(RESPUESTA); // Añadimos al comando
+                
+                respuesta = SQL_comando.ExecuteNonQuery() == 1 || true ? "Realizado Exitosamente" : "Error al modificar la pregunta";
+
+            } catch (Exception error) {
+                respuesta = error.Message;
+                throw;
+            } finally {
+                if (SQL.State == ConnectionState.Open) SQL.Close();
+            }
+            return respuesta;
+        }
+
+        // DELETE
+        public string Delete(DB_preguntas PreguntDelete)
+        {
+            string respuesta = "";
+            SqlConnection SQL = new SqlConnection();
+            try
+            {
+                SQL.ConnectionString = ConexionDB.StringConection;
+                SQL.Open();
+
+                SqlCommand SQL_comando = new SqlCommand();
+                SQL_comando.Connection = SQL;
+                SQL_comando.CommandText = "DELETEusuarios_pregunta_seguridad";
+                SQL_comando.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter IDPREGUNTA = new SqlParameter();
+                IDPREGUNTA.ParameterName = "@idpregunta";
+                IDPREGUNTA.SqlDbType = SqlDbType.Int;
+                IDPREGUNTA.Size = 250;
+                IDPREGUNTA.Value = PreguntDelete.Usuarios_pregunta_seguridad_id;
+                SQL_comando.Parameters.Add(IDPREGUNTA);
+
+                respuesta = SQL_comando.ExecuteNonQuery() == 1 || true ? "Realizado Exitosamente" : "Error al eliminar la pregunta de seguridad";
+            }
+            catch (Exception error)
+            {
+                respuesta = error.Message;
+                throw;
+            }
+            finally
+            {
+                if (SQL.State == ConnectionState.Open) SQL.Close();
+            }
+            return respuesta;
+        }
+
     }
 }
