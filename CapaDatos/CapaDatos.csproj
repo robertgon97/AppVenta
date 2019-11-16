@@ -44,6 +44,7 @@
     <Compile Include="ConexionDB.cs" />
     <Compile Include="DB_articulos.cs" />
     <Compile Include="DB_cliente.cs" />
+    <Compile Include="DB_compras.cs" />
     <Compile Include="DB_preguntas.cs" />
     <Compile Include="DB_proveedores.cs" />
     <Compile Include="DB_stock.cs" />
