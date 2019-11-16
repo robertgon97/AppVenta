@@ -129,12 +129,21 @@ namespace CapaDatos
         }
 
         // Constructor con parámetros
-        public DB_users(int id, string username, string name, string pasword, string search) {
-            this.User_id = id;
-            this.User_username = username;
-            this.User_name = name;
-            this.User_password = pasword;
-            this.Search_value = search;
+        public DB_users(int id, int tipoid, int documentoid, string username, string password, string nombres, string apellidos, string sexo, string nacimiento, int cedula, string direccion, string correo, string telefono, string buscar) {
+            this._usuario_id = id;
+            this._usuario_tipo_id = tipoid;
+            this._tipo_documento_id = documentoid;
+            this._usuario_username = username;
+            this._usuario_password = password;
+            this._usuario_nombres = nombres;
+            this._usuario_apellidos = apellidos;
+            this._usuario_sexo = sexo;
+            this._usuario_fecha_nacimiento = nacimiento;
+            this._usuario_dni = cedula;
+            this._usuario_direccion = direccion;
+            this._usuario_email = correo;
+            this._usuario_telefono = telefono;
+            this._search_value = buscar;
         }
 
         // Metodos DB
@@ -142,7 +151,7 @@ namespace CapaDatos
         // GET ALL
         public DataTable GetAll () {
             string respuesta = "";
-            DataTable AllUsers = new DataTable("users");
+            DataTable AllUsers = new DataTable("usuarios");
             SqlConnection SQL = new SqlConnection();
             try {
 
@@ -150,7 +159,7 @@ namespace CapaDatos
                 SqlCommand SQL_comando = new SqlCommand();
                 SQL_comando.Connection = SQL;
 
-                SQL_comando.CommandText = "DB_USERS_GET_ALL";
+                SQL_comando.CommandText = "GET_usuarios";
                 SQL_comando.CommandType = CommandType.StoredProcedure;
 
                 SqlDataAdapter RespuestaSQL = new SqlDataAdapter(SQL_comando);
