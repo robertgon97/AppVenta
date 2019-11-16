@@ -65,7 +65,7 @@ namespace CapaDatos
         public string User_password
         { // Encapsulamiento de _usuario_password
             get { return Descriptar(_usuario_password); }
-            set { _usuario_password = Encriptar(_usuario_password); }
+            set { _usuario_password = Encriptar(value); }
         }
 
         public string Usuario_nombres

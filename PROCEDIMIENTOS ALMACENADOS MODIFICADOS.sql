@@ -108,6 +108,14 @@
 		END
 	GO
 
+	CREATE Procedure GET_ID_BY_usuarios_pregunta_seguridad 
+	@usuario int
+	AS
+		BEGIN
+			 SELECT * FROM usuarios_pregunta_seguridad WHERE usuario_id = @usuario
+		END
+	GO
+
 	CREATE Procedure GET_SEARCH_usuarios_pregunta_seguridad 
 	@search text
 	AS
