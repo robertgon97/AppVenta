@@ -208,6 +208,39 @@ namespace CapaDatos
             return AllUsers;
         }
 
+        // GET ID
+        public DataTable GetIdUser(DB_users UserID) {
+            string respuesta = "";
+            DataTable AllUsers = new DataTable("usuarios");
+            SqlConnection SQL = new SqlConnection();
+            try {
+                SQL.ConnectionString = ConexionDB.StringConection;
+                SqlCommand SQL_comando = new SqlCommand();
+                SQL_comando.Connection = SQL;
+
+                SQL_comando.CommandText = "GET_ID_usuarios";
+                SQL_comando.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter IDUSER = new SqlParameter();
+                IDUSER.ParameterName = "@idusuario";
+                IDUSER.SqlDbType = SqlDbType.Int;
+                IDUSER.Size = 256;
+                IDUSER.Value = UserID.User_id;
+                SQL_comando.Parameters.Add(IDUSER);
+
+                SqlDataAdapter RespuestaSQL = new SqlDataAdapter(SQL_comando);
+                RespuestaSQL.Fill(AllUsers);
+
+            } catch (Exception error) {
+                respuesta = error.Message;
+                AllUsers = null;
+                throw;
+            } finally {
+                if (SQL.State == ConnectionState.Open) SQL.Close();
+            }
+            return AllUsers;
+        }
+
         // INSERT
         public string Create(DB_users UserNew) {
             string respuesta = "";
