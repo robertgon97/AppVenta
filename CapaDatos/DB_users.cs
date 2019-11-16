@@ -11,7 +11,7 @@ using System.Data.SqlClient; // Enviar comandos a la BD
 namespace CapaDatos
 {
     // Esta clase es para manejar los datos de una tabla en especifico
-    class DB_users
+    public class DB_users
     {
         private int _usuario_id;
         private int _usuario_tipo_id;

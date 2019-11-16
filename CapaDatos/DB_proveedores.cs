@@ -10,7 +10,7 @@ using System.Data.SqlClient; // Enviar comandos a la BD
 
 namespace CapaDatos
 {
-    class DB_proveedores
+    public class DB_proveedores
     {
         private int _proveedor_id;
         private int _tipo_documento_id;

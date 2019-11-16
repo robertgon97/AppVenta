@@ -11,10 +11,10 @@ namespace CapaNegocio
 {
     public class N_usuarios
     {
-        public static string agregarUsuario(string a)
+        public static string agregarUsuario(int id, int tipoid, int documentoid, string username, string password, string nombres, string apellidos, string sexo, string nacimiento, int cedula, string direccion, string correo, string telefono, string buscar)
         {
-            DB_users nuevoUsuario = new DB_users();
-            return nuevoUsuario;
+            DB_users nuevoUsuario = new DB_users(id, tipoid, documentoid, username, password, nombres, apellidos, sexo, nacimiento, cedula, direccion, correo, telefono, buscar);
+            return nuevoUsuario.Create(nuevoUsuario);
         }
     }
 }

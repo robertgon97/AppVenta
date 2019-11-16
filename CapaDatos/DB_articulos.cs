@@ -10,7 +10,7 @@ using System.Data.SqlClient; // Enviar comandos a la BD
 
 namespace CapaDatos
 {
-    class DB_articulos
+    public class DB_articulos
     {
         private int _articulo_id;
         private int _categoria_id;
