@@ -368,36 +368,98 @@ namespace CapaDatos
 
                 SqlCommand SQL_comando = new SqlCommand();
                 SQL_comando.Connection = SQL;
-                SQL_comando.CommandText = "DB_USERS_UPDATE";
+                SQL_comando.CommandText = "PUTusuarios";
                 SQL_comando.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter IDUSER = new SqlParameter();
-                IDUSER.ParameterName = "@varID";
+                IDUSER.ParameterName = "@idusuario";
                 IDUSER.SqlDbType = SqlDbType.Int;
-                IDUSER.Size = 50;
+                IDUSER.Size = 250;
                 IDUSER.Value = UserEdit.User_id;
                 SQL_comando.Parameters.Add(IDUSER);
 
-                SqlParameter USERNAME = new SqlParameter();
-                USERNAME.ParameterName = "@varUser";
-                USERNAME.SqlDbType = SqlDbType.VarChar;
-                USERNAME.Size = 50;
-                USERNAME.Value = UserEdit.User_username;
-                SQL_comando.Parameters.Add(USERNAME);
+                SqlParameter TIPOUSER = new SqlParameter(); // instanciamos
+                TIPOUSER.ParameterName = "@usuario_tipo_id"; // nombre de variable
+                TIPOUSER.SqlDbType = SqlDbType.Int; // tipo de variable
+                TIPOUSER.Size = 256;
+                TIPOUSER.Value = UserEdit.Usuario_tipo_id;
+                SQL_comando.Parameters.Add(TIPOUSER); // Añadimos al comando
 
-                SqlParameter NAME = new SqlParameter(); 
-                NAME.ParameterName = "@varName";
-                NAME.SqlDbType = SqlDbType.VarChar;
-                NAME.Size = 50;
-                NAME.Value = UserEdit.User_name;
-                SQL_comando.Parameters.Add(NAME);
+                SqlParameter TIPODOCUMENTO = new SqlParameter(); // instanciamos
+                TIPODOCUMENTO.ParameterName = "@tipo_documento_id"; // nombre de variable
+                TIPODOCUMENTO.SqlDbType = SqlDbType.Int; // tipo de variable
+                TIPODOCUMENTO.Size = 256;
+                TIPODOCUMENTO.Value = UserEdit.Tipo_documento_id;
+                SQL_comando.Parameters.Add(TIPODOCUMENTO); // Añadimos al comando
 
-                SqlParameter PASSWORD = new SqlParameter(); 
-                PASSWORD.ParameterName = "@varPassword";
-                PASSWORD.SqlDbType = SqlDbType.VarChar;
-                PASSWORD.Size = 256;
-                PASSWORD.Value = UserEdit.User_password;
-                SQL_comando.Parameters.Add(PASSWORD);
+                SqlParameter USERNAME = new SqlParameter(); // instanciamos
+                USERNAME.ParameterName = "@usuario_username"; // nombre de variable
+                USERNAME.SqlDbType = SqlDbType.VarChar; // tipo de variable
+                USERNAME.Size = 150; // Tamaño de variable
+                USERNAME.Value = UserEdit.Usuario_username; // Valor de la variable
+                SQL_comando.Parameters.Add(USERNAME); // Añadimos al comando
+
+                SqlParameter PASSWORD = new SqlParameter(); // instanciamos
+                PASSWORD.ParameterName = "@usuario_password"; // nombre de variable
+                PASSWORD.SqlDbType = SqlDbType.VarChar; // tipo de variable
+                PASSWORD.Size = 500; // Tamaño de variable
+                PASSWORD.Value = UserEdit.User_password; // valor de la variable
+                SQL_comando.Parameters.Add(PASSWORD); // Añadimos al comando
+
+                SqlParameter NAME = new SqlParameter(); // instanciamos
+                NAME.ParameterName = "@usuario_nombres"; // nombre de variable
+                NAME.SqlDbType = SqlDbType.VarChar; // tipo de variable
+                NAME.Size = 50; // Tamaño de variable
+                NAME.Value = UserEdit.Usuario_nombres; // valor de la variable
+                SQL_comando.Parameters.Add(NAME); // Añadimos al comando
+
+                SqlParameter APELLIDOS = new SqlParameter(); // instanciamos
+                APELLIDOS.ParameterName = "@usuario_apellidos"; // nombre de variable
+                APELLIDOS.SqlDbType = SqlDbType.VarChar; // tipo de variable
+                APELLIDOS.Size = 50; // Tamaño de variable
+                APELLIDOS.Value = UserEdit.Usuario_apellidos; // valor de la variable
+                SQL_comando.Parameters.Add(APELLIDOS); // Añadimos al comando
+
+                SqlParameter SEXO = new SqlParameter(); // instanciamos
+                SEXO.ParameterName = "@usuario_sexo"; // nombre de variable
+                SEXO.SqlDbType = SqlDbType.VarChar; // tipo de variable
+                SEXO.Size = 50; // Tamaño de variable
+                SEXO.Value = UserEdit.Usuario_sexo; // valor de la variable
+                SQL_comando.Parameters.Add(SEXO); // Añadimos al comando
+
+                SqlParameter NACIMIENTO = new SqlParameter(); // instanciamos
+                NACIMIENTO.ParameterName = "@usuario_fecha_nacimiento"; // nombre de variable
+                NACIMIENTO.SqlDbType = SqlDbType.Date; // tipo de variable
+                NACIMIENTO.Value = UserEdit.Usuario_fecha_nacimiento; // valor de la variable
+                SQL_comando.Parameters.Add(NACIMIENTO); // Añadimos al comando
+
+                SqlParameter Cedula = new SqlParameter(); // instanciamos
+                Cedula.ParameterName = "@usuario_dni"; // nombre de variable
+                Cedula.SqlDbType = SqlDbType.Int; // tipo de variable
+                Cedula.Size = 15;
+                Cedula.Value = UserEdit.Usuario_dni;
+                SQL_comando.Parameters.Add(Cedula); // Añadimos al comando
+
+                SqlParameter DIRECCION = new SqlParameter(); // instanciamos
+                DIRECCION.ParameterName = "@usuario_direccion"; // nombre de variable
+                DIRECCION.SqlDbType = SqlDbType.Text; // tipo de variable
+                DIRECCION.Size = 300; // Tamaño de variable
+                DIRECCION.Value = UserEdit.Usuario_direccion; // valor de la variable
+                SQL_comando.Parameters.Add(DIRECCION); // Añadimos al comando
+
+                SqlParameter CORREO = new SqlParameter(); // instanciamos
+                CORREO.ParameterName = "@usuario_email"; // nombre de variable
+                CORREO.SqlDbType = SqlDbType.Text; // tipo de variable
+                CORREO.Size = 300; // Tamaño de variable
+                CORREO.Value = UserEdit.Usuario_email; // valor de la variable
+                SQL_comando.Parameters.Add(CORREO); // Añadimos al comando
+
+                SqlParameter TELEFONO = new SqlParameter(); // instanciamos
+                TELEFONO.ParameterName = "@usuario_telefono"; // nombre de variable
+                TELEFONO.SqlDbType = SqlDbType.Int; // tipo de variable
+                TELEFONO.Size = 50;
+                TELEFONO.Value = UserEdit.Usuario_telefono;
+                SQL_comando.Parameters.Add(TELEFONO); // Añadimos al comando
 
                 respuesta = SQL_comando.ExecuteNonQuery() == 1 || true ? "Realizado Exitosamente" : "Error al modificar el usuario";
             } catch (Exception error) {
@@ -419,13 +481,13 @@ namespace CapaDatos
 
                 SqlCommand SQL_comando = new SqlCommand();
                 SQL_comando.Connection = SQL;
-                SQL_comando.CommandText = "DB_USERS_DELETE";
+                SQL_comando.CommandText = "DELETEusuarios";
                 SQL_comando.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter IDUSER = new SqlParameter();
-                IDUSER.ParameterName = "@varID";
+                IDUSER.ParameterName = "@idusuario";
                 IDUSER.SqlDbType = SqlDbType.Int;
-                IDUSER.Size = 50;
+                IDUSER.Size = 250;
                 IDUSER.Value = UserDelete.User_id;
                 SQL_comando.Parameters.Add(IDUSER);
 
