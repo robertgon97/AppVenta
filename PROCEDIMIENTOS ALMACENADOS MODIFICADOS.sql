@@ -970,6 +970,23 @@
 		END
 	GO
 
+	CREATE Procedure GET_ALL_usuarios_tipo
+	AS
+		BEGIN
+			SELECT * FROM usuarios_tipo
+		END
+	GO
+
+	CREATE Procedure POST_usuarios_tipo
+	@usuario_tipo_id int output,
+	@tipo_usuario_nombre varchar(150), 
+	@tipo_usuario_descripcion text
+	AS
+		BEGIN
+			INSERT INTO usuarios_tipo (usuario_tipo_id, tipo_usuario_nombre, tipo_usuario_descripcion) VALUES (NULL, @tipo_usuario_nombre, @tipo_usuario_descripcion)
+		END
+	GO
+
 
 
 	-- // PRESENTACION (presentacion)
