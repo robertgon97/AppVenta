@@ -279,7 +279,7 @@ namespace CapaDatos
 
                 SqlCommand SQL_comando = new SqlCommand();
                 SQL_comando.Connection = SQL;
-                SQL_comando.CommandText = "PUTventas_detalles";
+                SQL_comando.CommandText = "PUTcompras_detalles";
                 SQL_comando.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter DETALLE = new SqlParameter();
@@ -350,7 +350,7 @@ namespace CapaDatos
 
                 SqlCommand SQL_comando = new SqlCommand();
                 SQL_comando.Connection = SQL;
-                SQL_comando.CommandText = "DELETEventas_detalles";
+                SQL_comando.CommandText = "DELETEcompras_detalles";
                 SQL_comando.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter DETALLE = new SqlParameter();
