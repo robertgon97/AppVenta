@@ -13,11 +13,11 @@ namespace CapaNegocio
 {
     class N_articulos
     {
-        public static DataTable obtenerTodosLosArticulos(int miArticuloID)
+        public static DataTable obtenerTodosLosArticulos(int miUsuarioID)
         {
             // Auditamos la Accion
             string _fechaActual = DateTime.Now.ToLongDateString();
-            DB_auditoria nuevaAuditoria = new DB_auditoria(0, miArticuloID, _fechaActual, "Obtuvo Todos Los Articulos", "El Usuario solicito todos los Articulos", "");
+            DB_auditoria nuevaAuditoria = new DB_auditoria(0, miUsuarioID, _fechaActual, "Obtuvo Todos Los Articulos", "El Usuario solicito todos los Articulos", "");
             nuevaAuditoria.Create(nuevaAuditoria);
 
             // Ejecutamos la Accion
@@ -25,11 +25,11 @@ namespace CapaNegocio
             return TodosLosArticulos;
         }
 
-        public static DataTable obtenerUnArticulo(int miArticuloID, int id)
+        public static DataTable obtenerUnArticulo(int miUsuarioID, int id)
         {
             // Auditamos la Accion
             string _fechaActual = DateTime.Now.ToLongDateString();
-            DB_auditoria nuevaAuditoria = new DB_auditoria(0, miArticuloID, _fechaActual, "Obtuvo informacion un artículo", "El Usuario solicito todos los datos de un artículo", "");
+            DB_auditoria nuevaAuditoria = new DB_auditoria(0, miUsuarioID, _fechaActual, "Obtuvo informacion un artículo", "El Usuario solicito todos los datos de un artículo", "");
             nuevaAuditoria.Create(nuevaAuditoria);
 
             // Ejecutamos la Accion
@@ -38,11 +38,11 @@ namespace CapaNegocio
             return ArticuloEnTabla;
         }
 
-        public static DataTable buscarArticulos(int miArticuloID, string search)
+        public static DataTable buscarArticulos(int miUsuarioID, string search)
         {
             // Auditamos la Accion
             string _fechaActual = DateTime.Now.ToLongDateString();
-            DB_auditoria nuevaAuditoria = new DB_auditoria(0, miArticuloID, _fechaActual, "Solicito buscar informacion de un artículo", "El Usuario solicito la busqueda de todos los datos de los artículos en la base de datos", "");
+            DB_auditoria nuevaAuditoria = new DB_auditoria(0, miUsuarioID, _fechaActual, "Solicito buscar informacion de un artículo", "El Usuario solicito la busqueda de todos los datos de los artículos en la base de datos", "");
             nuevaAuditoria.Create(nuevaAuditoria);
 
             // Ejecutamos la Accion
@@ -51,11 +51,11 @@ namespace CapaNegocio
             return ArticuloEnTabla;
         }
 
-        public static string agregarArticulo(int miArticuloID, int id, int categoriaid, int presentacionid, string nombre, string codigobarra, string descripcion, string imagen, decimal precio, string buscar)
+        public static string agregarArticulo(int miUsuarioID, int id, int categoriaid, int presentacionid, string nombre, string codigobarra, string descripcion, string imagen, decimal precio, string buscar)
         {
             // Auditamos la Accion
             string _fechaActual = DateTime.Now.ToLongDateString();
-            DB_auditoria nuevaAuditoria = new DB_auditoria(0, miArticuloID, _fechaActual, "Registro un nuevo artículo", "El Usuario solicito el registro de otro artículo", "");
+            DB_auditoria nuevaAuditoria = new DB_auditoria(0, miUsuarioID, _fechaActual, "Registro un nuevo artículo", "El Usuario solicito el registro de otro artículo", "");
             nuevaAuditoria.Create(nuevaAuditoria);
 
             // Ejecutamos la Accion
@@ -63,11 +63,11 @@ namespace CapaNegocio
             return nuevoArticulo.Create(nuevoArticulo);
         }
 
-        public static string modificarArticulo(int miArticuloID, int id, int categoriaid, int presentacionid, string nombre, string codigobarra, string descripcion, string imagen, decimal precio, string buscar)
+        public static string modificarArticulo(int miUsuarioID, int id, int categoriaid, int presentacionid, string nombre, string codigobarra, string descripcion, string imagen, decimal precio, string buscar)
         {
             // Auditamos la Accion
             string _fechaActual = DateTime.Now.ToLongDateString();
-            DB_auditoria nuevaAuditoria = new DB_auditoria(0, miArticuloID, _fechaActual, "Modifico informacion un Artículo", "El Usuario solicito modificar los datos de un artículo", "");
+            DB_auditoria nuevaAuditoria = new DB_auditoria(0, miUsuarioID, _fechaActual, "Modifico informacion de un Artículo", "El Usuario solicito modificar los datos de un artículo", "");
             nuevaAuditoria.Create(nuevaAuditoria);
 
             // Ejecutamos la Accion
@@ -75,11 +75,11 @@ namespace CapaNegocio
             return actualArticulo.Edit(actualArticulo);
         }
 
-        public static string eliminarArticulo(int miArticuloID, int id)
+        public static string eliminarArticulo(int miUsuarioID, int id)
         {
             // Auditamos la Accion
             string _fechaActual = DateTime.Now.ToLongDateString();
-            DB_auditoria nuevaAuditoria = new DB_auditoria(0, miArticuloID, _fechaActual, "Elimino informacion un Usuario", "El Usuario solicito eliminar los datos de un artículo", "");
+            DB_auditoria nuevaAuditoria = new DB_auditoria(0, miUsuarioID, _fechaActual, "Elimino informacion de un articulo", "El Usuario solicito eliminar los datos de un artículo", "");
             nuevaAuditoria.Create(nuevaAuditoria);
 
             // Ejecutamos la Accion
