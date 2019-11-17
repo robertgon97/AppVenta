@@ -49,6 +49,31 @@ namespace CapaNegocio
             return UsuarioEnTabla;
         }
 
+        public static DataTable obtenerTiposDeUsuario(int miUsuarioID)
+        {
+            // Auditamos la Accion
+            string _fechaActual = DateTime.Now.ToLongDateString();
+            DB_auditoria nuevaAuditoria = new DB_auditoria(0, miUsuarioID, _fechaActual, "Solicito informacion acerca de los niveles de usuario", "El Usuario solicito la busqueda de todos los datos de los niveles de usuarios en la base de datos", "");
+            nuevaAuditoria.Create(nuevaAuditoria);
+
+            // Ejecutamos la Accion
+            DataTable TypeUsers = new DB_users_tipo().GetAll();
+            return TypeUsers;
+        }
+
+        public static DataTable obtenerUnTipoDeUsuario(int miUsuarioID, int id)
+        {
+            // Auditamos la Accion
+            string _fechaActual = DateTime.Now.ToLongDateString();
+            DB_auditoria nuevaAuditoria = new DB_auditoria(0, miUsuarioID, _fechaActual, "Solicito informacion acerca del nivel de usuario", "El Usuario solicito la busqueda de todos los datos del nivel de usuario en la base de datos", "");
+            nuevaAuditoria.Create(nuevaAuditoria);
+
+            // Ejecutamos la Accion
+            DB_users_tipo tipo = new DB_users_tipo(id, "0", "0", "0");
+            DataTable TipoEnTabla = tipo.GetDetalleID(tipo);
+            return TipoEnTabla;
+        }
+
         public static string agregarUsuario(int miUsuarioID, int id, int tipoid, int documentoid, string username, string password, string nombres, string apellidos, string sexo, string nacimiento, int cedula, string direccion, string correo, string telefono, string buscar)
         {
             // Auditamos la Accion
@@ -59,6 +84,18 @@ namespace CapaNegocio
             // Ejecutamos la Accion
             DB_users nuevoUsuario = new DB_users(id, tipoid, documentoid, username, password, nombres, apellidos, sexo, nacimiento, cedula, direccion, correo, telefono, buscar);
             return nuevoUsuario.Create(nuevoUsuario);
+        }
+
+        public static string agregarTipoUsuario(int miUsuarioID, int _usuario_tipo_id, string _tipo_usuario_nombre, string _tipo_usuario_descripcion, string _search_value)
+        {
+            // Auditamos la Accion
+            string _fechaActual = DateTime.Now.ToLongDateString();
+            DB_auditoria nuevaAuditoria = new DB_auditoria(0, miUsuarioID, _fechaActual, "Registro un nuevo tipo de usuario", "El Usuario solicito el registro de un nuevo tipo de usuario", "");
+            nuevaAuditoria.Create(nuevaAuditoria);
+
+            // Ejecutamos la Accion
+            DB_users_tipo nuevoTipo = new DB_users_tipo(_usuario_tipo_id, _tipo_usuario_nombre, _tipo_usuario_descripcion, _search_value);
+            return nuevoTipo.Create(nuevoTipo);
         }
 
         public static string modificarUsuario(int miUsuarioID, int id, int tipoid, int documentoid, string username, string password, string nombres, string apellidos, string sexo, string nacimiento, int cedula, string direccion, string correo, string telefono, string buscar)

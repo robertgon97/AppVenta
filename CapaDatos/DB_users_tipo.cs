@@ -10,7 +10,7 @@ using System.Data.SqlClient; // Enviar comandos a la BD
 
 namespace CapaDatos
 {
-    class DB_users_tipo
+    public class DB_users_tipo
     {
         private int _usuario_tipo_id;
         private string _tipo_usuario_nombre;
