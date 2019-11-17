@@ -1001,6 +1001,25 @@
 		END
 	GO
 
+	CREATE Procedure GET_ALL_presentacion
+	AS
+		BEGIN
+			 SELECT * FROM presentacion
+		END
+	GO
+
+	-- POST
+
+	CREATE Procedure POST_presentacion
+	@presentacion_id int output,
+	@presentacion_nombre text, 
+	@presentacion_descripcion text
+	AS
+		BEGIN
+			INSERT INTO presentacion (presentacion_id, presentacion_nombre, presentacion_descripcion) VALUES (NULL, @presentacion_nombre, @presentacion_descripcion)
+		END
+	GO
+
 
 
 
