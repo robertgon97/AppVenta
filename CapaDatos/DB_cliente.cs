@@ -14,7 +14,7 @@ namespace CapaDatos
     {
         private int _cliente_id;
         private int _tipo_documento_id;
-        private int _cliente_nombres;
+        private string _cliente_nombres;
         private string _cliente_apellidos;
         private string _cliente_dni;
         private string _cliente_direccion;
@@ -35,7 +35,7 @@ namespace CapaDatos
             set { _tipo_documento_id = value; }
         }
 
-        public int Cliente_nombres
+        public string Cliente_nombres
         {
             get { return _cliente_nombres; }
             set { _cliente_nombres = value; }
@@ -89,7 +89,7 @@ namespace CapaDatos
             // 
         }
 
-        public DB_cliente(int id, int tipodni, int nombres, string apellidos, string dni, string direccion, string nacimiento, string correo, string telefono, string search)
+        public DB_cliente(int id, int tipodni, string nombres, string apellidos, string dni, string direccion, string nacimiento, string correo, string telefono, string search)
         {
             this._cliente_id = id;
             this._tipo_documento_id = tipodni;
