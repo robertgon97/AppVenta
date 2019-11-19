@@ -48,9 +48,9 @@ namespace CapaNegocio
             nuevaAuditoria.Create(nuevaAuditoria);
 
             // Ejecutamos la Accion
-            DB_cliente Clientes = new DB_cliente(0, 0, "0", "0", "0", "0", "0", "0","0", search);
-            DataTable ClientesEnTabla = Clientes.GetSearch(Clientes);
-            return ClientesEnTabla;
+            DB_cliente Cliente = new DB_cliente(0, 0, "0", "0", "0", "0", "0", "0","0", search);
+            DataTable ClienteEnTabla = Cliente.GetSearch(Cliente);
+            return ClienteEnTabla;
         }
 
         public static string agregarCliente(int miUsuarioID, int id, int tipodni, string nombres, string apellidos, string dni, string direccion, string nacimiento, string correo, string telefono,  string buscar)
@@ -61,8 +61,8 @@ namespace CapaNegocio
             nuevaAuditoria.Create(nuevaAuditoria);
 
             // Ejecutamos la Accion
-            DB_cliente nuevoArticulo = new DB_cliente(id, tipodni, nombres, apellidos, dni, direccion, nacimiento, correo, telefono, buscar);
-            return nuevoArticulo.Create(nuevoArticulo);
+            DB_cliente nuevoCliente = new DB_cliente(id, tipodni, nombres, apellidos, dni, direccion, nacimiento, correo, telefono, buscar);
+            return nuevoCliente.Create(nuevoCliente);
         }
 
         public static string modificarCliente(int miUsuarioID, int id, int tipodni, string nombres, string apellidos, string dni, string direccion, string nacimiento, string correo, string telefono, string buscar)
