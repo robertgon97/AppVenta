@@ -11,7 +11,7 @@ using System.Data;
 
 namespace CapaNegocio
 {
-    class N_articulos
+  public  class N_articulos
     {
         public static DataTable obtenerTodosLosArticulos(int miUsuarioID)
         {
@@ -46,12 +46,12 @@ namespace CapaNegocio
             nuevaAuditoria.Create(nuevaAuditoria);
 
             // Ejecutamos la Accion
-            DB_articulos ARticulos = new DB_articulos( 0, 0, 0, "0", "0", "0", "0", 0, search);
-            DataTable ArticuloEnTabla = ARticulos.GetSearch(ARticulos);
-            return ArticuloEnTabla;
+            DB_articulos Articulos = new DB_articulos( 0, 0, 0, "0", "0", "0", "0", 0, search);
+            DataTable ArticulosEnTabla = Articulos.GetSearch(Articulos);
+            return ArticulosEnTabla;
         }
 
-        public static string agregarArticulo(int miUsuarioID, int id, int categoriaid, int presentacionid, string nombre, string codigobarra, string descripcion, string imagen, decimal precio, string buscar)
+        public static string agregarArticulo(int miUsuarioID, int _articulo_id, int _categoria_id, int _presentacion_id, string _articulo_nombre, string _articulo_codigo_barra, string _articulo_descripcion, string _articulo_imagen, decimal _articulo_precio,  string buscar)
         {
             // Auditamos la Accion
             string _fechaActual = DateTime.Now.ToLongDateString();
@@ -59,11 +59,11 @@ namespace CapaNegocio
             nuevaAuditoria.Create(nuevaAuditoria);
 
             // Ejecutamos la Accion
-            DB_articulos nuevoArticulo = new DB_articulos(id, categoriaid, presentacionid, nombre, codigobarra, descripcion, imagen, precio, buscar);
+            DB_articulos nuevoArticulo = new DB_articulos(_articulo_id, _categoria_id, _presentacion_id, _articulo_nombre, _articulo_codigo_barra, _articulo_descripcion, _articulo_imagen, _articulo_precio, buscar);
             return nuevoArticulo.Create(nuevoArticulo);
         }
 
-        public static string modificarArticulo(int miUsuarioID, int id, int categoriaid, int presentacionid, string nombre, string codigobarra, string descripcion, string imagen, decimal precio, string buscar)
+        public static string modificarArticulo(int miUsuarioID, int _articulo_id, int _categoria_id, int _presentacion_id, string _articulo_nombre, string _articulo_codigo_barra, string _articulo_descripcion, string _articulo_imagen, decimal _articulo_precio, string buscar)
         {
             // Auditamos la Accion
             string _fechaActual = DateTime.Now.ToLongDateString();
@@ -71,7 +71,7 @@ namespace CapaNegocio
             nuevaAuditoria.Create(nuevaAuditoria);
 
             // Ejecutamos la Accion
-            DB_articulos actualArticulo = new DB_articulos(id, categoriaid, presentacionid, nombre, codigobarra, descripcion, imagen, precio, buscar);
+            DB_articulos actualArticulo = new DB_articulos(_articulo_id, _categoria_id, _presentacion_id, _articulo_nombre, _articulo_codigo_barra, _articulo_descripcion, _articulo_imagen, _articulo_precio, buscar);
             return actualArticulo.Edit(actualArticulo);
         }
 
