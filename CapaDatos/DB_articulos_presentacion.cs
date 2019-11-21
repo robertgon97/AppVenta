@@ -10,7 +10,7 @@ using System.Data.SqlClient; // Enviar comandos a la BD
 
 namespace CapaDatos
 {
-    class DB_articulos_presentacion
+   public class DB_articulos_presentacion
     {
         private int _presentacion_id;
         private string _presentacion_nombre;
@@ -40,10 +40,10 @@ namespace CapaDatos
             //
         }
 
-        public DB_articulos_presentacion(int _presentacion_id, string __presentacion_nombre, string _presentacion_descripcion)
+        public DB_articulos_presentacion(int _presentacion_id, string _presentacion_nombre, string _presentacion_descripcion)
         {
             this._presentacion_id = _presentacion_id;
-            this._presentacion_nombre = __presentacion_nombre;
+            this._presentacion_nombre = _presentacion_nombre;
             this._presentacion_descripcion = _presentacion_descripcion;
         }
 

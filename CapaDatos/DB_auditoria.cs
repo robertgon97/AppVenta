@@ -160,12 +160,12 @@ namespace CapaDatos
                 SQL_comando.CommandText = "GET_ID_auditoria";
                 SQL_comando.CommandType = CommandType.StoredProcedure;
 
-                SqlParameter IDAUDITORIA = new SqlParameter();
-                IDAUDITORIA.ParameterName = "@idauditoria";
-                IDAUDITORIA.SqlDbType = SqlDbType.Int;
-                IDAUDITORIA.Size = 256;
-                IDAUDITORIA.Value = AuditoriaID.Auditoria_id;
-                SQL_comando.Parameters.Add(IDIDAUDITORIAUSER);
+                SqlParameter IDAUDITORIAUSER = new SqlParameter();
+                IDAUDITORIAUSER.ParameterName = "@idauditoria";
+                IDAUDITORIAUSER.SqlDbType = SqlDbType.Int;
+                IDAUDITORIAUSER.Size = 256;
+                IDAUDITORIAUSER.Value = AuditoriaID.Auditoria_id;
+                SQL_comando.Parameters.Add(IDAUDITORIAUSER);
 
                 SqlDataAdapter RespuestaSQL = new SqlDataAdapter(SQL_comando);
                 RespuestaSQL.Fill(AllAuditorias);

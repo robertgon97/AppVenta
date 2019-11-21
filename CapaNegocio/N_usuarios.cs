@@ -87,7 +87,7 @@ namespace CapaNegocio
             return listaDePreguntas;
         }
 
-        public static DataTable ObtenerPreguntID(int miUsuarioID, int usuarioObjetivo)
+        public static DataTable ObtenerPreguntaID(int miUsuarioID, int usuarioObjetivo)
         {
             // Auditamos la Accion
             string _fechaActual = DateTime.Now.ToLongDateString();
