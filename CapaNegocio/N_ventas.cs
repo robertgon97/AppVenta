@@ -85,6 +85,45 @@ namespace CapaNegocio
             DB_ventas eliminarVenta = new DB_ventas(id, 0, 0, 0, 0, "0", "0", 0, "0", "0", 0, 0, 0, "0");
             return eliminarVenta.Delete(eliminarVenta);
         }
-           
+
+        //VENTAS_DETALLES EN VENTAS
+        public static DataTable obtenerVenta_Detalle(int miUsuarioID, int id)
+        {
+            // Auditamos la Accion
+            string _fechaActual = DateTime.Now.ToLongDateString();
+            DB_auditoria nuevaAuditoria = new DB_auditoria(0, miUsuarioID, _fechaActual, "Obtuvo informacion del Detalle de la Venta  ", "El Usuario solicito todos los datos del Detalle de la Venta ", "");
+            nuevaAuditoria.Create(nuevaAuditoria);
+
+            // Ejecutamos la Accion
+            DB_ventas_detalles DetalleVenta = new DB_ventas_detalles (id, 0, 0, 0, 0, 0, "0");
+            DataTable DetalleVentaEnTabla = DetalleVenta.GetDetalleID(DetalleVenta);
+            return DetalleVentaEnTabla;
+        }
+
+
+        public static DataTable obtenerTodasLasVentasDetalles(int miUsuarioID)
+        {
+            // Auditamos la Accion
+            string _fechaActual = DateTime.Now.ToLongDateString();
+            DB_auditoria nuevaAuditoria = new DB_auditoria(0, miUsuarioID, _fechaActual, "Obtuvo Todos Los Detalles de Ventas", "El Usuario solicito todos los Detalles de las Ventas", "");
+            nuevaAuditoria.Create(nuevaAuditoria);
+
+            // Ejecutamos la Accion
+            DataTable TodasLasVentasDetalles = new DB_ventas_detalles().GetAll();
+            return TodasLasVentasDetalles;
+        }
+
+
+        public static string agregarVentasDetalles(int miUsuarioID, int _detalle_venta_id, int _venta_id, int _stock_id, int _detalle_venta_cantidad, decimal _detalle_venta_precio_unidad, decimal _detalle_venta_precio_total, string buscar)
+        {
+            // Auditamos la Accion
+            string _fechaActual = DateTime.Now.ToLongDateString();
+            DB_auditoria nuevaAuditoria = new DB_auditoria(0, miUsuarioID, _fechaActual, "Registro un nuevo Detalle de Venta", "El Usuario solicito el registro del Detalle de Venta", "");
+            nuevaAuditoria.Create(nuevaAuditoria);
+
+            // Ejecutamos la Accion
+            DB_ventas_detalles nuevoDetalleVenta = new DB_ventas_detalles(_detalle_venta_id, _venta_id, _stock_id, _detalle_venta_cantidad, _detalle_venta_precio_unidad, _detalle_venta_precio_total, buscar);
+            return nuevoDetalleVenta.Create(nuevoDetalleVenta);
+        }
     }
 }

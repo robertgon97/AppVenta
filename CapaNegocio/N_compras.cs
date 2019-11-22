@@ -88,5 +88,46 @@ namespace CapaNegocio
             return eliminarCompra.Delete(eliminarCompra);
         }
 
+        // COMPRAS_DETALLES EN COMPRAS
+
+        public static DataTable obtenerCompra_Detalle(int miUsuarioID, int id)
+        {
+            // Auditamos la Accion
+            string _fechaActual = DateTime.Now.ToLongDateString();
+            DB_auditoria nuevaAuditoria = new DB_auditoria(0, miUsuarioID, _fechaActual, "Obtuvo informacion del Detalle de la Compras  ", "El Usuario solicito todos los datos del Detalle de Compra ", "");
+            nuevaAuditoria.Create(nuevaAuditoria);
+
+            // Ejecutamos la Accion
+            DB_compras_detalles DetalleCompra = new DB_compras_detalles(id, 0, 0, 0, 0, 0, "0");
+            DataTable DetalleCompraEnTabla = DetalleCompra.GetDetalleID(DetalleCompra);
+            return DetalleCompraEnTabla;
+        }
+
+
+        public static DataTable obtenerTodasLasComprasDetalles(int miUsuarioID)
+        {
+            // Auditamos la Accion
+            string _fechaActual = DateTime.Now.ToLongDateString();
+            DB_auditoria nuevaAuditoria = new DB_auditoria(0, miUsuarioID, _fechaActual, "Obtuvo Todos Los Detalles de Compras", "El Usuario solicito todos los Detalles de las Compras", "");
+            nuevaAuditoria.Create(nuevaAuditoria);
+
+            // Ejecutamos la Accion
+            DataTable TodasLasComprasDetalles = new DB_compras_detalles().GetAll();
+            return TodasLasComprasDetalles;
+        }
+
+
+        public static string agregarComprasDetalles(int miUsuarioID, int _compra_detalle_id, int _compra_id, int _stock_id, int _compra_detalle_cantidad, decimal _compra_detalle_precio_unidad, decimal _compra_detalle_precio_total, string buscar)
+        {
+            // Auditamos la Accion
+            string _fechaActual = DateTime.Now.ToLongDateString();
+            DB_auditoria nuevaAuditoria = new DB_auditoria(0, miUsuarioID, _fechaActual, "Registro un nuevo Detalle de Compra", "El Usuario solicito el registro del Detalle de la Compra", "");
+            nuevaAuditoria.Create(nuevaAuditoria);
+
+            // Ejecutamos la Accion
+            DB_compras_detalles nuevoDetalleCompra= new DB_compras_detalles(_compra_detalle_id, _compra_id, _stock_id, _compra_detalle_cantidad, _compra_detalle_precio_unidad, _compra_detalle_precio_total, buscar);
+            return nuevoDetalleCompra.Create(nuevoDetalleCompra);
+        }
+
     }
 }
