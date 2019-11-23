@@ -47,7 +47,7 @@ namespace CapaNegocio
             nuevaAuditoria.Create(nuevaAuditoria);
 
             // Ejecutamos la Accion
-            DB_compras Compra = new DB_compras(0, 0, 0,,0, "0", "0", 0, "0", "0", 0, 0, 0, "0", search);
+            DB_compras Compra = new DB_compras(0, 0, 0, 0, "0", "0", 0, "0", "0", 0, 0, 0, search);
             DataTable CompraEnTabla = Compra.GetSearch(Compra);
             return CompraEnTabla;
         }
