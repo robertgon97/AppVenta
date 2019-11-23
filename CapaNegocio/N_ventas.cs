@@ -200,5 +200,19 @@ namespace CapaNegocio
             return eliminarNota.Delete(eliminarNota);
         }
 
+        // Tipo de Ventas
+
+        public static DataTable obtenerTiposVentas(int miUsuarioID)
+        {
+            // Auditamos la Accion
+            string _fechaActual = DateTime.Now.ToLongDateString();
+            DB_auditoria nuevaAuditoria = new DB_auditoria(0, miUsuarioID, _fechaActual, "Obtuvo Todos los tipos de ventas", "El Usuario solicito todas las notas de credito de la aplicacion", "");
+            nuevaAuditoria.Create(nuevaAuditoria);
+
+            // Ejecutamos la Accion
+            DataTable ventasTipos = new DB_ventas_tipoventa().GetAll();
+            return ventasTipos;
+        }
+
     }
 }
