@@ -827,7 +827,7 @@
 	@idauditoria int
 	AS
 		BEGIN
-			 SELECT * FROM auditoria WHERE auditoria_id = @idauditoria
+			 SELECT * FROM auditoria WHERE usuario_id = @idauditoria
 		END
 	GO
 
