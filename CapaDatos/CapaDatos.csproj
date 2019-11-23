@@ -55,6 +55,7 @@
     <Compile Include="DB_users_tipo.cs" />
     <Compile Include="DB_ventas.cs" />
     <Compile Include="DB_ventas_detalles.cs" />
+    <Compile Include="DB_ventas_tipoventa.cs" />
     <Compile Include="DB_venta_nota_credito.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

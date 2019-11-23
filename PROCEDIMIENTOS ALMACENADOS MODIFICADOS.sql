@@ -1055,6 +1055,13 @@
 		END
 	GO
 
+	CREATE Procedure GET_ALL_ventas_tipo
+	AS
+		BEGIN
+			 SELECT * FROM ventas_tipo
+		END
+	GO
+
 
 
 	-- // STATUS (status)

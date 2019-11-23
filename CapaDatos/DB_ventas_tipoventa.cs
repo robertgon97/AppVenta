@@ -4,57 +4,59 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 // Agregados manualmente
 using System.Data; // Manejo de Datos SQL
 using System.Data.SqlClient; // Enviar comandos a la BD
 
 namespace CapaDatos
 {
-    public class DB_articulos_categorias
+    class DB_ventas_tipoventa
     {
-        private int _categoria_id;
-        private string _categoria_nombre;
-        private string _categoria_descripcion;
-        
-        public int Categoria_id
+        private int _ventas_tipo_id;
+        private string _ventas_tipo_nombre;
+        private string _ventas_tipo_descripcion;
+
+        public int Ventas_tipo_id
         {
-            get { return _categoria_id; }
-            set { _categoria_id = value; }
+            get { return _ventas_tipo_id; }
+            set { _ventas_tipo_id = value; }
         }
 
-        public string Categoria_nombre
+        public string Ventas_tipo_nombre
         {
-            get { return _categoria_nombre; }
-            set { _categoria_nombre = value; }
+            get { return _ventas_tipo_nombre; }
+            set { _ventas_tipo_nombre = value; }
         }
 
-        public string Categoria_descripcion
+        public string Ventas_tipo_descripcion
         {
-            get { return _categoria_descripcion; }
-            set { _categoria_descripcion = value; }
+            get { return _ventas_tipo_descripcion; }
+            set { _ventas_tipo_descripcion = value; }
         }
 
         // Constructor Vacio
 
-        public DB_articulos_categorias()
+        public DB_ventas_tipoventa()
         {
             //
         }
 
-        public DB_articulos_categorias(int _categoria_id, string _categoria_nombre, string _categoria_descripcion)
+        public DB_ventas_tipoventa(int _ventas_tipo_id, string _ventas_tipo_nombre, string _ventas_tipo_descripcion)
         {
-            this._categoria_id = _categoria_id;
-            this._categoria_nombre = _categoria_nombre;
-            this._categoria_descripcion = _categoria_descripcion;
+            this.Ventas_tipo_id = _ventas_tipo_id;
+            this.Ventas_tipo_nombre = _ventas_tipo_nombre;
+            this.Ventas_tipo_descripcion = _ventas_tipo_descripcion;
         }
 
-        //Metodos DB
+
+        // Metodos DB
 
         // GET ALL
         public DataTable GetAll()
         {
             string respuesta = "";
-            DataTable AllCategorias = new DataTable("categorias");
+            DataTable AllTipo_ventas = new DataTable("ventas_tipo");
             SqlConnection SQL = new SqlConnection();
             try
             {
@@ -63,31 +65,31 @@ namespace CapaDatos
                 SqlCommand SQL_comando = new SqlCommand();
                 SQL_comando.Connection = SQL;
 
-                SQL_comando.CommandText = "GET_ALL_categorias";
+                SQL_comando.CommandText = "GET_ALL_ventas_tipo";
                 SQL_comando.CommandType = CommandType.StoredProcedure;
 
                 SqlDataAdapter RespuestaSQL = new SqlDataAdapter(SQL_comando);
-                RespuestaSQL.Fill(AllCategorias);
+                RespuestaSQL.Fill(AllTipo_ventas);
 
             }
             catch (Exception error)
             {
                 respuesta = error.Message;
-                AllCategorias = null;
+                AllTipo_ventas = null;
                 throw;
             }
             finally
             {
                 if (SQL.State == ConnectionState.Open) SQL.Close();
             }
-            return AllCategorias;
+            return AllTipo_ventas;
         }
 
         // GET ID
-        public DataTable GetDetalleID(DB_articulos_categorias CategoriaID)
+        public DataTable GetDetalleID(DB_ventas_tipoventa TipoVenta)
         {
             string respuesta = "";
-            DataTable AllCategorias = new DataTable("categorias");
+            DataTable AllTipo_ventas = new DataTable("ventas_tipo");
             SqlConnection SQL = new SqlConnection();
             try
             {
@@ -95,33 +97,32 @@ namespace CapaDatos
                 SqlCommand SQL_comando = new SqlCommand();
                 SQL_comando.Connection = SQL;
 
-                SQL_comando.CommandText = "GET_ID_categorias";
+                SQL_comando.CommandText = "GET_ID_ventas_tipo";
                 SQL_comando.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter DetalleID = new SqlParameter();
-                DetalleID.ParameterName = "@idcategoria";
+                DetalleID.ParameterName = "@idventas_tipo";
                 DetalleID.SqlDbType = SqlDbType.Int;
                 DetalleID.Size = 256;
-                DetalleID.Value = CategoriaID.Categoria_id;
+                DetalleID.Value = TipoVenta.Ventas_tipo_id;
                 SQL_comando.Parameters.Add(DetalleID);
 
                 SqlDataAdapter RespuestaSQL = new SqlDataAdapter(SQL_comando);
-                RespuestaSQL.Fill(AllCategorias);
+                RespuestaSQL.Fill(AllTipo_ventas);
 
             }
             catch (Exception error)
             {
                 respuesta = error.Message;
-                AllCategorias = null;
+                AllTipo_ventas = null;
                 throw;
             }
             finally
             {
                 if (SQL.State == ConnectionState.Open) SQL.Close();
             }
-            return AllCategorias;
+            return AllTipo_ventas;
         }
-        
 
     }
 }
