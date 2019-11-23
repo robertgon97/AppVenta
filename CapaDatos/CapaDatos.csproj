@@ -48,6 +48,7 @@
     <Compile Include="DB_cliente.cs" />
     <Compile Include="DB_compras.cs" />
     <Compile Include="DB_compras_detalles.cs" />
+    <Compile Include="DB_configuration.cs" />
     <Compile Include="DB_preguntas.cs" />
     <Compile Include="DB_proveedores.cs" />
     <Compile Include="DB_status_global.cs" />
