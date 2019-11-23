@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-
 using CapaDatos;
 using System.Data;
 
@@ -49,6 +47,56 @@ namespace CapaNegocio
             DB_articulos Articulos = new DB_articulos( 0, 0, 0, "0", "0", "0", "0", 0, search);
             DataTable ArticulosEnTabla = Articulos.GetSearch(Articulos);
             return ArticulosEnTabla;
+        }
+
+        public static DataTable ObtenerCategorias(int miUsuarioID)
+        {
+            // Auditamos la Accion
+            string _fechaActual = DateTime.Now.ToLongDateString();
+            DB_auditoria nuevaAuditoria = new DB_auditoria(0, miUsuarioID, _fechaActual, "Obtuvo Todas las Categorias", "El Usuario solicito todos los datos de las categorias de los articulos", "");
+            nuevaAuditoria.Create(nuevaAuditoria);
+
+            // Ejecutamos la Accion
+            DataTable AllCategorias = new DB_articulos_categorias().GetAll();
+            return AllCategorias;
+        }
+
+        public static DataTable ObtenerIDCategoria(int miUsuarioID, int id)
+        {
+            // Auditamos la Accion
+            string _fechaActual = DateTime.Now.ToLongDateString();
+            DB_auditoria nuevaAuditoria = new DB_auditoria(0, miUsuarioID, _fechaActual, "Obtuvo Una Categoria", "El Usuario solicito todos los datos de una categoria de los articulos", "");
+            nuevaAuditoria.Create(nuevaAuditoria);
+
+            // Ejecutamos la Accion
+            DB_articulos_categorias Categoria = new DB_articulos_categorias(id, "0", "0");
+            DataTable CategoriaTabla = Categoria.GetDetalleID(Categoria);
+            return CategoriaTabla;
+        }
+
+        public static DataTable ObtenerPresentaciones(int miUsuarioID)
+        {
+            // Auditamos la Accion
+            string _fechaActual = DateTime.Now.ToLongDateString();
+            DB_auditoria nuevaAuditoria = new DB_auditoria(0, miUsuarioID, _fechaActual, "Obtuvo Todas las Presentaciones", "El Usuario solicito todos los datos de las presentaciones de los articulos", "");
+            nuevaAuditoria.Create(nuevaAuditoria);
+
+            // Ejecutamos la Accion
+            DataTable AllPresentacion = new DB_articulos_presentacion().GetAll();
+            return AllPresentacion;
+        }
+
+        public static DataTable ObtenerIDPresentaciones(int miUsuarioID, int id)
+        {
+            // Auditamos la Accion
+            string _fechaActual = DateTime.Now.ToLongDateString();
+            DB_auditoria nuevaAuditoria = new DB_auditoria(0, miUsuarioID, _fechaActual, "Obtuvo Una Presentacion", "El Usuario solicito todos los datos de una presentacion de los articulos", "");
+            nuevaAuditoria.Create(nuevaAuditoria);
+
+            // Ejecutamos la Accion
+            DB_articulos_presentacion Presentacion = new DB_articulos_presentacion(id, "0", "0");
+            DataTable PresentacionTabla = Presentacion.GetDetalleID(Presentacion);
+            return PresentacionTabla;
         }
 
         public static string agregarArticulo(int miUsuarioID, int _articulo_id, int _categoria_id, int _presentacion_id, string _articulo_nombre, string _articulo_codigo_barra, string _articulo_descripcion, string _articulo_imagen, decimal _articulo_precio,  string buscar)
