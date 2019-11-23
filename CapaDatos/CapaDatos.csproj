@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="ConexionDB.cs" />
     <Compile Include="DB_articulos.cs" />
+    <Compile Include="DB_articulos_categorias.cs" />
     <Compile Include="DB_articulos_presentacion.cs" />
     <Compile Include="DB_auditoria.cs" />
     <Compile Include="DB_cliente.cs" />

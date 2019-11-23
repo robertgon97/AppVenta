@@ -1035,6 +1035,12 @@
 		END
 	GO
 
+	CREATE Procedure GET_ALL_categorias AS
+		BEGIN
+			 SELECT * FROM categorias
+		END
+	GO
+
 
 
 	-- // VENTAS_TIPO (ventas_tipo)
