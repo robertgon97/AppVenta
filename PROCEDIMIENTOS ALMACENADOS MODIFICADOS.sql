@@ -1113,3 +1113,9 @@
 		END
 	GO
 
+	CREATE Procedure GET_ALL_tipo_documento AS
+		BEGIN
+			 SELECT * FROM tipo_documento
+		END
+	GO
+
