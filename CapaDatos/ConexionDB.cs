@@ -8,6 +8,9 @@ namespace CapaDatos
 {
     class ConexionDB
     {
-        public static string StringConection = "Data Source = NOMBRESERVIDOR(NOMBREPC); Initial Catalog = NOMBREBASEDATOS; Integrate Security = true;";
+        // Example
+        // public static string StringConection = "Data Source = NOMBRESERVIDOR(NOMBREPC); Initial Catalog = NOMBREBASEDATOS; Integrate Security = true;";
+
+        public static string StringConection = "Data Source=.;Initial Catalog=SisGestionadmin;Integrated Security=True";
     }
 }
