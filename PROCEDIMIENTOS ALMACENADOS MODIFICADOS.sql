@@ -983,7 +983,7 @@
 	@tipo_usuario_descripcion text
 	AS
 		BEGIN
-			INSERT INTO usuarios_tipo (usuario_tipo_id, tipo_usuario_nombre, tipo_usuario_descripcion) VALUES (NULL, @tipo_usuario_nombre, @tipo_usuario_descripcion)
+			INSERT INTO usuarios_tipo (usuario_tipo_id, tipo_usuario_nombre, tipo_usuario_descripcion) VALUES (@usuario_tipo_id, @tipo_usuario_nombre, @tipo_usuario_descripcion)
 		END
 	GO
 
