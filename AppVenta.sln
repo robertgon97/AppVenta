@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VentasGonths", "VentasGonths\VentasGonths.csproj", "{ACC0DC5C-99FE-4012-8650-70507CA763A9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ventas", "VentasGonths\Ventas.csproj", "{ACC0DC5C-99FE-4012-8650-70507CA763A9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaDatos", "CapaDatos\CapaDatos.csproj", "{88FFBF04-95D2-4521-AADA-ED42FC2026CF}"
 EndProject
