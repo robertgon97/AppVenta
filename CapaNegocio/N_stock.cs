@@ -10,7 +10,7 @@ using System.Data;
 
 namespace CapaNegocio
 {
-    class N_stock
+    public class N_stock
     {
         public static DataTable obtenerTodoelStock(int miUsuarioID)
         {
