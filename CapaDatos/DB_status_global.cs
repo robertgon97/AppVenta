@@ -10,52 +10,51 @@ using System.Data.SqlClient; // Enviar comandos a la BD
 
 namespace CapaDatos
 {
-    public class DB_ventas_tipoventa
+    public class DB_status_global
     {
-        private int _ventas_tipo_id;
-        private string _ventas_tipo_nombre;
-        private string _ventas_tipo_descripcion;
+        private int _status_id;
+        private string _status_nombre;
+        private string _status_descripcion;
 
-        public int Ventas_tipo_id
+        public int Status_id
         {
-            get { return _ventas_tipo_id; }
-            set { _ventas_tipo_id = value; }
+            get { return _status_id; }
+            set { _status_id = value; }
         }
 
-        public string Ventas_tipo_nombre
+        public string Status_nombre
         {
-            get { return _ventas_tipo_nombre; }
-            set { _ventas_tipo_nombre = value; }
+            get { return _status_nombre; }
+            set { _status_nombre = value; }
         }
 
-        public string Ventas_tipo_descripcion
+        public string Status_descripcion
         {
-            get { return _ventas_tipo_descripcion; }
-            set { _ventas_tipo_descripcion = value; }
+            get { return _status_descripcion; }
+            set { _status_descripcion = value; }
         }
 
         // Constructor Vacio
-
-        public DB_ventas_tipoventa()
+        public DB_status_global()
         {
             //
         }
 
-        public DB_ventas_tipoventa(int _ventas_tipo_id, string _ventas_tipo_nombre, string _ventas_tipo_descripcion)
+        public DB_status_global(int _status_id, string _status_nombre, string _status_descripcion)
         {
-            this.Ventas_tipo_id = _ventas_tipo_id;
-            this.Ventas_tipo_nombre = _ventas_tipo_nombre;
-            this.Ventas_tipo_descripcion = _ventas_tipo_descripcion;
+            this.Status_id = _status_id;
+            this.Status_nombre = _status_nombre;
+            this.Status_descripcion = _status_descripcion;
         }
 
 
-        // Metodos DB
+        //Metodos DB
 
         // GET ALL
         public DataTable GetAll()
         {
             string respuesta = "";
-            DataTable AllTipo_ventas = new DataTable("ventas_tipo");
+            DataTable AllStatus = new DataTable("status");
             SqlConnection SQL = new SqlConnection();
             try
             {
@@ -64,31 +63,31 @@ namespace CapaDatos
                 SqlCommand SQL_comando = new SqlCommand();
                 SQL_comando.Connection = SQL;
 
-                SQL_comando.CommandText = "GET_ALL_ventas_tipo";
+                SQL_comando.CommandText = "GET_ALL_status";
                 SQL_comando.CommandType = CommandType.StoredProcedure;
 
                 SqlDataAdapter RespuestaSQL = new SqlDataAdapter(SQL_comando);
-                RespuestaSQL.Fill(AllTipo_ventas);
+                RespuestaSQL.Fill(AllStatus);
 
             }
             catch (Exception error)
             {
                 respuesta = error.Message;
-                AllTipo_ventas = null;
+                AllStatus = null;
                 throw;
             }
             finally
             {
                 if (SQL.State == ConnectionState.Open) SQL.Close();
             }
-            return AllTipo_ventas;
+            return AllStatus;
         }
 
         // GET ID
-        public DataTable GetDetalleID(DB_ventas_tipoventa TipoVenta)
+        public DataTable GetDetalleID(DB_status_global StatusID)
         {
             string respuesta = "";
-            DataTable AllTipo_ventas = new DataTable("ventas_tipo");
+            DataTable AllStatus = new DataTable("status");
             SqlConnection SQL = new SqlConnection();
             try
             {
@@ -96,32 +95,31 @@ namespace CapaDatos
                 SqlCommand SQL_comando = new SqlCommand();
                 SQL_comando.Connection = SQL;
 
-                SQL_comando.CommandText = "GET_ID_ventas_tipo";
+                SQL_comando.CommandText = "GET_ID_status";
                 SQL_comando.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter DetalleID = new SqlParameter();
-                DetalleID.ParameterName = "@idventas_tipo";
+                DetalleID.ParameterName = "@idstatus";
                 DetalleID.SqlDbType = SqlDbType.Int;
                 DetalleID.Size = 256;
-                DetalleID.Value = TipoVenta.Ventas_tipo_id;
+                DetalleID.Value = StatusID.Status_id;
                 SQL_comando.Parameters.Add(DetalleID);
 
                 SqlDataAdapter RespuestaSQL = new SqlDataAdapter(SQL_comando);
-                RespuestaSQL.Fill(AllTipo_ventas);
+                RespuestaSQL.Fill(AllStatus);
 
             }
             catch (Exception error)
             {
                 respuesta = error.Message;
-                AllTipo_ventas = null;
+                AllStatus = null;
                 throw;
             }
             finally
             {
                 if (SQL.State == ConnectionState.Open) SQL.Close();
             }
-            return AllTipo_ventas;
+            return AllStatus;
         }
-
     }
 }

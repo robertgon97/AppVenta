@@ -50,6 +50,7 @@
     <Compile Include="DB_compras_detalles.cs" />
     <Compile Include="DB_preguntas.cs" />
     <Compile Include="DB_proveedores.cs" />
+    <Compile Include="DB_status_global.cs" />
     <Compile Include="DB_stock.cs" />
     <Compile Include="DB_users.cs" />
     <Compile Include="DB_users_tipo.cs" />

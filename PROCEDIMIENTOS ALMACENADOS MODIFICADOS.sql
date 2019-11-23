@@ -1076,6 +1076,13 @@
 		END
 	GO
 
+	CREATE Procedure GET_ALL_status
+	AS
+		BEGIN
+			 SELECT * FROM status
+		END
+	GO
+
 
 
 
