@@ -11,7 +11,7 @@ namespace CapaNegocio
 {
     public class N_auditoria
     {
-        public static DataTable obtenerTodosLosProveedores(int miUsuarioID)
+        public static DataTable obtenerTodaLaAuditoria(int miUsuarioID)
         {
             // Auditamos la Accion
             string _fechaActual = DateTime.Now.ToLongDateString();
@@ -23,30 +23,30 @@ namespace CapaNegocio
             return AllAuditoria;
         }
 
-        public static DataTable obtenerUnProveedor(int miUsuarioID, int id)
+        public static DataTable obtenerPorUsuarioID(int miUsuarioID, int id)
         {
             // Auditamos la Accion
             string _fechaActual = DateTime.Now.ToLongDateString();
-            DB_auditoria nuevaAuditoria = new DB_auditoria(0, miUsuarioID, _fechaActual, "Obtuvo informacion un proveedor", "El Usuario solicito todos los datos de un proveedor", "");
+            DB_auditoria nuevaAuditoria = new DB_auditoria(0, miUsuarioID, _fechaActual, "Obtuvo informacion de una auditoria", "El Usuario solicito todos los datos acerca de una auditoria de un usuario en especifico", "");
             nuevaAuditoria.Create(nuevaAuditoria);
 
             // Ejecutamos la Accion
-            DB_proveedores Proveedor = new DB_proveedores(id, 0, "0", "0", "0", "0", 0, "0", "0");
-            DataTable ProveedorEnTabla = Proveedor.GetIDProveedor(Proveedor);
-            return ProveedorEnTabla;
+            DB_auditoria Auditoria = new DB_auditoria(0, id, "0", "0", "0", "0");
+            DataTable TablaAuditoria = Auditoria.GetIdUser(Auditoria);
+            return TablaAuditoria;
         }
 
-        public static DataTable buscarProveedores(int miUsuarioID, string search)
+        public static DataTable buscarAuditoria(int miUsuarioID, string search)
         {
             // Auditamos la Accion
             string _fechaActual = DateTime.Now.ToLongDateString();
-            DB_auditoria nuevaAuditoria = new DB_auditoria(0, miUsuarioID, _fechaActual, "Solicito buscar informacion de un proveedor", "El Usuario solicito la busqueda de todos los datos de los proveedores en la base de datos", "");
+            DB_auditoria nuevaAuditoria = new DB_auditoria(0, miUsuarioID, _fechaActual, "Solicito buscar informacion de una auditoria", "El Usuario solicito la busqueda de todos los datos de las auditorias en la base de datos", "");
             nuevaAuditoria.Create(nuevaAuditoria);
 
             // Ejecutamos la Accion
-            DB_proveedores Proveedor = new DB_proveedores(0, 0, "0", "0", "0", "0", 0, "0", search);
-            DataTable ProveedorEnTabla = Proveedor.GetSearch(Proveedor);
-            return ProveedorEnTabla;
+            DB_auditoria Auditorias = new DB_auditoria(0, 0, "0", "0", "0", search);
+            DataTable TablaAuditoria = Auditorias.GetSearch(Auditorias);
+            return TablaAuditoria;
         }
     }
 }

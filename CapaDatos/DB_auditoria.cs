@@ -164,7 +164,7 @@ namespace CapaDatos
                 IDAUDITORIAUSER.ParameterName = "@idauditoria";
                 IDAUDITORIAUSER.SqlDbType = SqlDbType.Int;
                 IDAUDITORIAUSER.Size = 256;
-                IDAUDITORIAUSER.Value = AuditoriaID.Auditoria_id;
+                IDAUDITORIAUSER.Value = AuditoriaID.Usuario_id;
                 SQL_comando.Parameters.Add(IDAUDITORIAUSER);
 
                 SqlDataAdapter RespuestaSQL = new SqlDataAdapter(SQL_comando);
