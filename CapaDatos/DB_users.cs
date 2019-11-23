@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 // Agregados manualmente
 using System.Data; // Manejo de Datos SQL
 using System.Data.SqlClient; // Enviar comandos a la BD
+using System.Security.Cryptography; // Encriptacion y Desencriptacion
+using System.IO; // Accesso a archivos
 
 namespace CapaDatos
 {
@@ -29,13 +31,13 @@ namespace CapaDatos
         private string _search_value;
 
         private string Encriptar(string valor) {
-            valor = "ASDFGHJKLOIUYTREWQASDFGESASDASDASDWQECVSDFSDFSDFSFSZDFSDFSF";
-            return valor;
+            byte[] byt = System.Text.Encoding.UTF8.GetBytes(valor);
+            return Convert.ToBase64String(byt);
         }
 
         private string Descriptar(string valor) {
-            valor = "DESENCRIPTE";
-            return valor;
+            byte[] b = Convert.FromBase64String(valor);
+            return System.Text.Encoding.UTF8.GetString(b);
         }
 
         public int User_id
