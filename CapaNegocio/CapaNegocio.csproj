@@ -40,17 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="N_articulos.cs" />
-    <Compile Include="N_auditoria.cs" />
-    <Compile Include="N_clientes.cs" />
-    <Compile Include="N_compras.cs" />
     <Compile Include="N_configuracion.cs" />
-    <Compile Include="N_proveedores.cs" />
-    <Compile Include="N_status.cs" />
-    <Compile Include="N_stock.cs" />
-    <Compile Include="N_tipodocumento.cs" />
-    <Compile Include="N_usuarios.cs" />
-    <Compile Include="N_ventas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

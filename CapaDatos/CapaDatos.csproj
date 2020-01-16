@@ -41,25 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConexionDB.cs" />
-    <Compile Include="DB_articulos.cs" />
-    <Compile Include="DB_articulos_categorias.cs" />
-    <Compile Include="DB_articulos_presentacion.cs" />
-    <Compile Include="DB_auditoria.cs" />
-    <Compile Include="DB_cliente.cs" />
-    <Compile Include="DB_compras.cs" />
-    <Compile Include="DB_compras_detalles.cs" />
     <Compile Include="DB_configuration.cs" />
-    <Compile Include="DB_preguntas.cs" />
-    <Compile Include="DB_proveedores.cs" />
-    <Compile Include="DB_status_global.cs" />
-    <Compile Include="DB_stock.cs" />
-    <Compile Include="DB_tipo_documento.cs" />
-    <Compile Include="DB_users.cs" />
-    <Compile Include="DB_users_tipo.cs" />
-    <Compile Include="DB_ventas.cs" />
-    <Compile Include="DB_ventas_detalles.cs" />
-    <Compile Include="DB_ventas_tipoventa.cs" />
-    <Compile Include="DB_venta_nota_credito.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

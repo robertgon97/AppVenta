@@ -11,6 +11,6 @@ namespace CapaDatos
         // Example
         // public static string StringConection = "Data Source = NOMBRESERVIDOR(NOMBREPC); Initial Catalog = NOMBREBASEDATOS; Integrate Security = true;";
 
-        public static string StringConection = "Data Source=.;Initial Catalog=SisGestionadmin;Integrated Security=True";
+        public static string StringConection = "Data Source=.;Initial Catalog=gonthsventas;Integrated Security=True";
     }
 }
